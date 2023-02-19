@@ -2,37 +2,29 @@
 
 /**
  * main- Entry point
- * 0 - 789
+ * declaration and initializtion of myA and MyCapA
+ * start of while loop for lowercase
+ * printing of the alphabet in lowercase
+ * start of the while loop for UPPERCASE
+ * printing of the alphabet in UPPERCASE
  * New line
  * Return: Always 0
  */
 int main(void)
 {
-	int leftNumber;
-	int middleNumber;
-	int rightNumber;
+	char myA = 'a';
+	char myCapA = 'A';
 
-	for (leftNumber = 0; leftNumber <= 9; leftNumber++)
+	while (myA <= 'z')
 	{
-		for (middleNumber = 0; middleNumber <= 9; middleNumber++)
-		{
-			for (rightNumber = 0; rightNumber <= 9; rightNumber++)
-			{
-				if (rightNumber > middleNumber && middleNumber > leftNumber)
-				{
-					putchar(leftNumber + '0');
-					putchar(middleNumber + '0');
-					putchar(rightNumber + '0');
-					if (leftNumber == 7 && middleNumber == 8 && rightNumber == 9)
-						continue;
-					else
-					{
-						putchar(',');
-						putchar(' ');
-					}
-				}
-			}
-		}
+		putchar(myA);
+		myA++;
+	}
+
+	while (myCapA <= 'Z')
+	{
+		putchar(myCapA);
+		myCapA++;
 	}
 	putchar('\n');
 	return (0);
