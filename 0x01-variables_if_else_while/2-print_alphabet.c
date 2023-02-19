@@ -24,7 +24,6 @@ int main(void)
 				else
 				{
 					putchar(',');
-					putchar(' ');
 				}
 			}
 			if (leftNumber == 9 && rightNumber == 9)
