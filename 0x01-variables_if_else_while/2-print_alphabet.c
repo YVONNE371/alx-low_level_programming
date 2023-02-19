@@ -2,34 +2,20 @@
 
 /**
  * main- Entry point
- * 0 - 99
+ * declaration and initializtion of myA
+ * start of while loop
+ * printing of the alphabet
  * New line
  * Return: Always 0
  */
 int main(void)
 {
-	int leftNumber;
-	int rightNumber;
+	char myA = 'a';
 
-	for (leftNumber = 0; leftNumber <= 9; leftNumber++)
+	while (myA <= 'z')
 	{
-		for (rightNumber = 0; rightNumber <= 9; rightNumber++)
-		{
-			if (rightNumber > leftNumber)
-			{
-				putchar(leftNumber + '0');
-				putchar(rightNumber + '0');
-				if (leftNumber == 8 && rightNumber == 9)
-					continue;
-				else
-				{
-					putchar(',');
-					putchar(' ');
-				}
-			}
-			if (leftNumber == 9 && rightNumber == 9)
-				continue;
-		}
+		putchar(myA);
+		myA++;
 	}
 	putchar('\n');
 	return (0);
