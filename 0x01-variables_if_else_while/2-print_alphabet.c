@@ -18,13 +18,9 @@ int main(void)
 			if (rightNumber > leftNumber)
 			{
 				putchar(leftNumber + '0');
-				putchar(rightNumber + '0');
 				if (leftNumber == 8 && rightNumber == 9)
-					continue;
-				else
-				{
-					putchar(',');
-				}
+					continue;	
+			}
 			}
 			if (leftNumber == 9 && rightNumber == 9)
 				continue;
