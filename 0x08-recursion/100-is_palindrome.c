@@ -1,47 +1,60 @@
 #include "main.h"
 
-/**
- * _strlen_recursion - rreturns the length of a string
- * @s: string
- * Return: the length of a string
- */
-
-int _strlen_recursion(char *s)
-{
-	if (*s == '\n')
-		return (0);
-	else
-		return (1 + _strlen_recursion(s + 1));
-}
+int find_strlen(char *s);
+int check_palindrome(char *s, int len, int index);
 
 /**
- * comparator - compares each character of the string
+ * is_palindrome - Check if is palindrome
  * @s: string
- * @n1: smallest iterator
- * @n2: biggest iterator
- * Return: .
- */
-
-int comparator(char *s, int n1, int n2)
-{
-	if (*(s + n1) == *(s + n2))
-	{
-		if (n1 == n2 || n1 == n2 + 1)
-			return (1);
-		return (comparator(s, n1 + 1, n2 - 1));
-	}
-	return (0);
-}
-
-/**
- * is_palindrome - detects if a string id a palindrome
- * @s: string
- * Return: 1 if s is a palindrome, 0 if not.
+ *
+ * Return: 1 if true, 0 if not
  */
 
 int is_palindrome(char *s)
 {
-	if (*s == '\n')
+	int index = 0;
+	int len = find_strlen(s);
+
+	if (!(*s))
 		return (1);
-	return (comparator(s, 0, _strlen_recursion(s) - 1));
+
+	return (check_palindrome(s, len, index));
+}
+
+/**
+ * find_strlen - Get string length
+ * @s: string
+ *
+ * Return: string length
+ */
+int find_strlen(char *s)
+{
+	int len = 0;
+
+	if (*(s + len))
+	{
+		len++;
+		len += find_strlen(s + len);
+	}
+
+	return (len);
+}
+
+/**
+ * check_palindrome - Checks if is palindrome.
+ * @s: string
+ * @len: string length
+ * @index: The index
+ *
+ * Return: 1 if true, 0 if false.
+ */
+int check_palindrome(char *s, int len, int index)
+{
+	if (s[index] == s[len / 2])
+		return (1);
+
+	if (s[index] == s[len - index - 1])
+		return (check_palindrome(s, len, index + 1));
+
+	return (0);
 }
