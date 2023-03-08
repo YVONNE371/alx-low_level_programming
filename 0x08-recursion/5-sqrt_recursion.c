@@ -8,6 +8,7 @@ int _doubler(int n, int x);
  *
  * Return: 1 or square root
  */
+
 int _sqrt_recursion(int n)
 {
 	return (_doubler(n, 1));
@@ -20,6 +21,7 @@ int _sqrt_recursion(int n)
  *
  * Return: Square root or -1
  */
+
 int _doubler(int n, int x)
 {
 	int doubler = x * x;
