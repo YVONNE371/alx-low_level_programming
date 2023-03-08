@@ -1,10 +1,13 @@
 #include <unistd.h>
 
 /**
- * This is my _putchar.c
+ * Write char c to stdout
+ *
+ * Return : 1 on success
+ * Return : -1 on error
  */
 
-int _putchar(char c)
+int _putchar(char myChar)
 {
-	return write(STDOUT_FILENO,&c, 1);
+	return (write(1, &myChar, 1));
 }
