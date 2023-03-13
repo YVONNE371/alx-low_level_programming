@@ -4,12 +4,12 @@
 
 /**
  * argstostr - convert the params passed to the program to string
- * @ac: the argument count 
+ * @ac: the argument count
  * @av: the argument vector
  *
  * Return: ...
  */
- 
+
 char *argstostr(int ac, char **av)
 {
 	int ch = 0, i = 0, j = 0, k = 0;
@@ -30,14 +30,14 @@ char *argstostr(int ac, char **av)
 		i++;
 	}
 
-	s = malloc((sizeof(char) *ch) + ac + 1);
+	s = malloc((sizeof(char) * ch) + ac + 1);
 
 	i = 0;
 	while (av[i])
 	{
 		while (av[i][j])
 		{
-			s[k] = av [i][j];
+			s[k] = av[i][j];
 			k++;
 			j++;
 		}
@@ -52,4 +52,4 @@ char *argstostr(int ac, char **av)
 	k++;
 	s[k] = '\0';
 	return (s);
-}	
+}
