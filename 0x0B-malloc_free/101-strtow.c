@@ -1,53 +1,106 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
-int world_len(char *str);
-int count_words(char *str);
-char **strtow(char *str);
+int len(char *str);
+int num_words(char *str);
 
 /**
- * world_len - Locates the index marking the end of the
- *             first word contained within a string.
- * @str: The string to be searched.
+ * strtow - splits a stirng into words
+ * @str: string to be splitted
  *
- * Return: The index marking the end of the initial word pointed to by str.
+ * Return: pointer to the array of splitted words
  */
-
-int word_len(char *str)
+char **strtow(char *str)
 {
-	int index = 0, len = 0;
+	char **split;
+	int i, j = 0, temp = 0, size = 0, words = num_words(str);
 
-	while (*(str + index) && *(str + index) != ' ')
+	if (words == 0)
+		return (NULL);
+
+	split = (char **) malloc(sizeof(char *) * (words + 1));
+	if (split != NULL)
 	{
-		len++;
-		index++;
-	}
+		for (i = 0; i <= len(str) && words; i++)
+		{
+			if ((str[i] != ' ') && (str[i] != '\0'))
+				size++;
+			else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
+			{
+				split[j] = (char *) malloc(sizeof(char) * size + 1);
 
-	return (len);
+				if (split[j] != NULL)
+				{
+					while (temp < size)
+					{
+						split[j][temp] = str[(i - size) + temp];
+						temp++;
+					}
+					split[j][temp] = '\0';
+					size = temp = 0;
+					j++;
+				}
+				else
+				{
+					while (j-- >= 0)
+					free(split[j]);
+					free(split);
+					return (NULL);
+				}
+			}
+		}
+		split[words] = NULL;
+		return (split);
+	}
+	else
+		return (NULL);
 }
 
 /**
- * counts_words - Counts the number of words contained within a string.
- * @str: The string to be searched.
- *
- * Return: The number of words contained within str.
- */
-
-int count_words(char *str)
+* num_words - counts the number of words in str
+*@str: string to be used
+*
+*Return: number of words
+*/
+int num_words(char *str)
 {
-	int index = 0, words = 0, len = 0;
+	int i = 0, words = 0;
 
-	for (index  = 0; *(str + index); index++)
-		len++;
-
-	for (index = -0; index < len; index++)
+	while (i <= len(str))
 	{
-		if (*(str + index) != ' ')
+		if ((str[i] != ' ') && (str[i] != '\0'))
 		{
-			words++;
-			index += world_len(str + index);
+			i++;
+		}
+		else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
+		{
+			words += 1;
+			i++;
+		}
+		else
+		{
+			i++;
 		}
 	}
 
 	return (words);
+}
+
+/**
+* len - returns length of str
+*@str: string to be counted
+*
+* Return: length of the string
+*/
+
+int len(char *str)
+{
+	int len = 0;
+
+	if (str != NULL)
+	{
+		while (str[len])
+			len++;
+	}
+	return (len);
 }
